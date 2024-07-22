@@ -10,9 +10,6 @@ void main() {
   runApp(
     GetMaterialApp(
       home: HomePageBai1(),
-      onGenerateRoute: (settings){
-
-      },
     ),
   );
 }
@@ -20,9 +17,10 @@ void main() {
 //I. Home Page
 class HomePageBai1 extends StatelessWidget{
 
-  // Tạo Getx Controller
-  SinhVienController sinhVienController = Get.put(SinhVienController());
+  //A. Tạo Getx Controller
+  final sinhVienController = Get.put(SinhVienController());
 
+  //D. Trang
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -43,14 +41,16 @@ class HomePageBai1 extends StatelessWidget{
     );
   }
 
-  // Hàm thêm Sinh Viên mới
+  //E. Dialog thêm Sinh Viên mới
   void addSinhVien(BuildContext context){
 
+    // Tạo controller cho các TextField
     TextEditingController textName = TextEditingController();
     TextEditingController textAge = TextEditingController();
     TextEditingController textJob = TextEditingController();
     TextEditingController textLinkImage = TextEditingController();
 
+    // Hiển thị Dialog
     showDialog<String>(
       context: context,
       builder: (BuildContext context) => Dialog(
@@ -69,11 +69,11 @@ class HomePageBai1 extends StatelessWidget{
           
                 //1. Điền thông tin
                 CustomTextFeild1(textControl: textName, maxLength: null, keyboardType: TextInputType.name, hintText: 'Name', prefixIcon: const Icon(Icons.account_circle_outlined), obscureText: false,),
-                const SizedBox(height: 5,),
+                const SizedBox(height: 8,),
                 CustomTextFeild1(textControl: textAge, maxLength: null, keyboardType: TextInputType.number, hintText: 'Age', prefixIcon: const Icon(Icons.support_agent), obscureText: false,),
-                const SizedBox(height: 5,),
+                const SizedBox(height: 8,),
                 CustomTextFeild1(textControl: textJob, maxLength: null, keyboardType: TextInputType.text, hintText: 'Job', prefixIcon: const Icon(Icons.account_balance), obscureText: false,),
-                const SizedBox(height: 10,),
+                const SizedBox(height: 8,),
                 CustomTextFeild1(textControl: textLinkImage, maxLength: null, keyboardType: TextInputType.text, hintText: 'Link Image', prefixIcon: const Icon(Icons.image), obscureText: false,),
                 const SizedBox(height: 10,),
           
@@ -100,7 +100,9 @@ class HomePageBai1 extends StatelessWidget{
                               int age = int.parse(textAge.text.toString().trim());
                               String job = textJob.text.toString().trim();
                               String linkImage = textLinkImage.text.toString().trim();
+
                               sinhVienController.listSinhVien.add(SinhVien(name, age, job, linkImage));
+                              sinhVienController.update(); // Cập nhật dữ liệu cho list
 
                               // Đóng cửa sổ
                               Navigator.pop(context);
@@ -147,67 +149,69 @@ class HomePageBai1 extends StatelessWidget{
 class HomePageBody extends StatelessWidget{
 
   // Tìm Getx Controller
-  SinhVienController sinhVienController = Get.find();
+  final SinhVienController sinhVienController = Get.find();
 
   // Trang ListView
   @override
   Widget build(BuildContext context) {
 
-    return Obx((){
+    return GetBuilder<SinhVienController>(
+      builder: (context){
 
-      //I. Sắp xếp dữ liệu
-      sinhVienController.listSinhVien.sort((a,b) => a.age.compareTo(b.age));
+        //I. Sắp xếp dữ liệu
+        sinhVienController.listSinhVien.sort((a,b) => a.age.compareTo(b.age));
 
-      //II. ListView danh sách Sinh Viên
-      return ListView.builder(
-        itemCount: sinhVienController.listSinhVien.length,
-        itemBuilder: (context, index){
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 5.0),
-            child: Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.green,
-              child: InkWell(
-                onTap: (){
-                  // Sự kiện khi click item -> Xem details
-                  Get.to(() => SinhvienDetails(indexSinhVien: index));
-                },
-                child: Row(
-                  children: [
+        //II. ListView danh sách Sinh Viên
+        return ListView.builder(
+          itemCount: sinhVienController.listSinhVien.length,
+          itemBuilder: (context, index){
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 5.0),
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                color: Colors.green,
+                child: InkWell(
+                  onTap: (){
+                    // Sự kiện khi click item -> Xem details
+                    Get.to(() => SinhvienDetails(indexSinhVien: index));
+                  },
+                  child: Row(
+                    children: [
 
-                    //1. Ảnh
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: Image.network(
-                        sinhVienController.listSinhVien[index].linkImage,
-                        fit: BoxFit.cover,
-                        width: 160,
-                        height: 220,
+                      //1. Ảnh
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: Image.network(
+                          sinhVienController.listSinhVien[index].linkImage,
+                          fit: BoxFit.cover,
+                          width: 160,
+                          height: 220,
+                        ),
                       ),
-                    ),
 
-                    //2. Thông tin tên, tuổi, nghề nghiệp
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(sinhVienController.listSinhVien[index].name, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700), textAlign: TextAlign.start,),
-                          Text('Age: ${sinhVienController.listSinhVien[index].age}', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400), textAlign: TextAlign.start,),
-                          Text('Job: ${sinhVienController.listSinhVien[index].job}', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400), textAlign: TextAlign.start,),
-                        ],
+                      //2. Thông tin tên, tuổi, nghề nghiệp
+                      Padding(
+                        padding: const EdgeInsets.only(left: 16.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(sinhVienController.listSinhVien[index].name, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700), textAlign: TextAlign.start,),
+                            Text('Age: ${sinhVienController.listSinhVien[index].age}', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400), textAlign: TextAlign.start,),
+                            Text('Job: ${sinhVienController.listSinhVien[index].job}', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400), textAlign: TextAlign.start,),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-          );
-        },
-      );
-    });
+            );
+          },
+        );
+      },
+    );
   }
 }
 

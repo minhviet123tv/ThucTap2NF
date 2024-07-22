@@ -21,7 +21,7 @@ class CustomTextFeild1 extends StatelessWidget{
       maxLines: 1, //dòng
       maxLength: maxLength, //số lượng ký tự
       enabled: true, //cho phép sử dụng
-      keyboardType: keyboardType,
+      keyboardType: keyboardType, // Kiểu dữ liệu sẽ nhập vào
       textAlign: TextAlign.start, //Căn vị trí chữ gợi ý và chữ gõ vào
       style: const TextStyle(color: Colors.blue), //kiểu dáng chữ sẽ gõ vào
       obscureText: obscureText, //Ẩn dạng password sau mỗi lần gõ
@@ -38,7 +38,7 @@ class CustomTextFeild1 extends StatelessWidget{
           borderSide: BorderSide(color: Colors.red),
           borderRadius: BorderRadius.all(Radius.circular(10)), //Bo góc viền
         ),
-        enabledBorder: const OutlineInputBorder( //Viền ngoài của TextField -> Khi được phép gõ vào (enabled: true)
+        enabledBorder: const OutlineInputBorder( //Viền ngoài của TextField -> Khi được phép gõ vào (enabled: true) nhưng chưa focus vào
           borderSide: BorderSide(color: Colors.green),
           borderRadius: BorderRadius.all(Radius.circular(10)), //Bo góc viền
         ),
