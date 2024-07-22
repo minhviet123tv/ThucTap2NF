@@ -17,9 +17,8 @@ class _SinhvienDetailsState extends State<SinhvienDetails> {
 
   //A. Dữ liệu
   SinhVienController sinhVienController = Get.find();
-  // late bool showUpdate;
 
- // Thứ tự SinhVien trong list đã sắp xếp
+ // Text controller
   TextEditingController textName = TextEditingController();
   TextEditingController textAge = TextEditingController();
   TextEditingController textJob = TextEditingController();
