@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:thuctap_bai1/main/main.dart';
+import 'package:thuctap_bai1/main.dart';
 
 void main() {
   // List<Customer> customers = [];

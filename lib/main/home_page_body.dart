@@ -33,12 +33,12 @@ class HomePageBody extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: Colors.grey[300],
+        decoration: const BoxDecoration(
+          color: Colors.white,
           shape: BoxShape.rectangle, // Có thể tạo hình chữ nhật, tròn cho container (Hình tròn thì không dùng borderRadius)
-          borderRadius: const BorderRadius.all(Radius.circular(16)), //Bo góc
+          borderRadius: BorderRadius.all(Radius.circular(16)), //Bo góc
           // border: Border.all(width: 3, color: Colors.black), //Viền bao ngoài
-          boxShadow: const [BoxShadow(
+          boxShadow: [BoxShadow(
             color: Colors.black26,
             spreadRadius: 1, //chiều rộng của bóng
             blurRadius: 3, // Độ nhoè, lan rộng của bóng
