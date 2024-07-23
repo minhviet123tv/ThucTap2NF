@@ -33,8 +33,8 @@ class _AddStudentState extends State<AddStudent> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Add student"),
-          backgroundColor: Colors.blue,
+          title: const Text("Add student", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),),
+          backgroundColor: Colors.blue[300],
         ),
         body: AddStudentBody(context),
       ),
@@ -51,7 +51,7 @@ class _AddStudentState extends State<AddStudent> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'Add new student',
+              'Type information',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
             ),
             const SizedBox(height: 15),

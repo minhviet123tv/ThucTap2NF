@@ -59,8 +59,8 @@ class _StudentDetailsState extends State<StudentDetails> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("${studentController.listStudent[widget.indexStudent].name} Details"),
-          backgroundColor: Colors.green,
+          title: Text("${studentController.listStudent[widget.indexStudent].name} Details", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),),
+          backgroundColor: Colors.white,
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -302,6 +302,7 @@ class _StudentDetailsState extends State<StudentDetails> {
         // Update nếu không trùng
         studentController.updateStudent(widget.indexStudent, student);
         studentController.changeShowUpdate(); // Cập nhật sang nút edit
+        setState(() {});
       }
 
     } else {

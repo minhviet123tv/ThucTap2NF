@@ -17,8 +17,8 @@ class HomePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("List student"),
-          backgroundColor: Colors.blue,
+          title: const Text("Student list", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),),
+          backgroundColor: Colors.white,
         ),
         body: HomePageBody(),
         floatingActionButton: FloatingActionButton(
