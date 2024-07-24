@@ -26,6 +26,13 @@ class StudentController extends GetxController {
     Student("Name 5", 29, "ISO developer", linkImageRandom[Random().nextInt(linkImageRandom.length)]),
   ].obs;
 
+  // Add student: add, sort, update
+  void addStudent(Student student){
+    listStudent.add(student);
+    listStudent.sort((a, b) => a.age.compareTo(b.age));
+    update();
+  }
+
   //2. Kiểm tra trùng lặp dữ liệu
   RxBool checkStudent(int index, Student student) {
     for (int i = 0; i < listStudent.length; i++) {
@@ -50,6 +57,17 @@ class StudentController extends GetxController {
   void changeShowUpdate() {
     showUpdate.value = !showUpdate.value;
     update();
+  }
+
+  //5. Sort list
+  void sortListStudent(){
+    listStudent.sort((a, b) => a.age.compareTo(b.age));
+    update();
+
+    // var sortedList = List<Student>.from(listStudent);
+    // sortedList.sort((a, b) => a.age.compareTo(b.age));
+    // listStudent.assignAll(sortedList);
+    // update();
   }
 }
 

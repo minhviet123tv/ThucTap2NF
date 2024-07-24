@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:thuctap_bai1/main/student_details.dart';
+import 'package:thuctap_bai1/home/student_details.dart';
 import 'controller/all_controller_binding.dart';
-import 'main/home_page.dart';
+import 'home/home_page.dart';
 
 // main
 void main() {
