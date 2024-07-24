@@ -9,8 +9,6 @@ import '../model/student.dart';
 //I. GetxController
 class StudentController extends GetxController {
 
-  RxBool showUpdate = false.obs; // Trạng thái nút update
-
   @override
   void onInit() {
     super.onInit();
@@ -26,14 +24,14 @@ class StudentController extends GetxController {
     Student("Name 5", 29, "ISO developer", linkImageRandom[Random().nextInt(linkImageRandom.length)]),
   ].obs;
 
-  // Add student: add, sort, update
+  //2. Add student: add, sort, update
   void addStudent(Student student){
     listStudent.add(student);
     listStudent.sort((a, b) => a.age.compareTo(b.age));
     update();
   }
 
-  //2. Kiểm tra trùng lặp dữ liệu
+  //3. Kiểm tra trùng lặp dữ liệu (khác index đưa vào)
   RxBool checkStudent(int index, Student student) {
     for (int i = 0; i < listStudent.length; i++) {
       if (i != index && listStudent[i].name == student.name && listStudent[i].job == student.job) {
@@ -43,7 +41,17 @@ class StudentController extends GetxController {
     return false.obs; // Giá trị mặc định
   }
 
-  //3. Update thông tin một đối tượng Student tại index
+  //4. Kiểm tra trùng lặp dữ liệu (toàn bộ list)
+  RxBool checkAllStudent(Student student) {
+    for (int i = 0; i < listStudent.length; i++) {
+      if (listStudent[i].name == student.name && listStudent[i].job == student.job) {
+        return true.obs;
+      }
+    }
+    return false.obs; // Giá trị mặc định
+  }
+
+  //5. Update thông tin một đối tượng Student tại index
   updateStudent(int index, Student student) {
     listStudent[index].name = student.name;
     listStudent[index].age = student.age;
@@ -53,21 +61,10 @@ class StudentController extends GetxController {
     update(); // Cập nhật, dùng GetBuidler do Obx không tự cập nhật được
   }
 
-  //4. Cập nhật trạng thái hiển thị edit thông tin Student
-  void changeShowUpdate() {
-    showUpdate.value = !showUpdate.value;
-    update();
-  }
-
-  //5. Sort list
+  //6. Sort list
   void sortListStudent(){
     listStudent.sort((a, b) => a.age.compareTo(b.age));
     update();
-
-    // var sortedList = List<Student>.from(listStudent);
-    // sortedList.sort((a, b) => a.age.compareTo(b.age));
-    // listStudent.assignAll(sortedList);
-    // update();
   }
 }
 

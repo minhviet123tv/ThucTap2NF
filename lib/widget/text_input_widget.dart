@@ -40,26 +40,28 @@ class TextInput extends StatelessWidget {
       obscureText: obscureText,
       //Ẩn dạng password sau mỗi lần gõ
 
+
       decoration: InputDecoration(
         hintText: hintText,
-        // Chữ gợi ý (Khi gõ chữ vào sẽ biến mất)
         hintStyle: const TextStyle(color: Colors.grey),
-        // style chữ gợi ý
-        // icon: Icon(Icons.email), //icon đầu dòng không nằm trong ô gõ
         prefixIcon: prefixIcon,
-        //icon đầu dòng nằm trong ô gõ chữ
         contentPadding: const EdgeInsets.all(10),
+        border: InputBorder.none,
 
         focusedBorder: OutlineInputBorder(
-          //Viền ngoài của TextField -> Khi có focus
           borderSide: BorderSide(color: error ? Colors.red : Colors.blue, width: error ? 2 : 1),
           borderRadius: const BorderRadius.all(Radius.circular(10)), //Bo góc viền
         ),
         enabledBorder: OutlineInputBorder(
-          //Viền ngoài của TextField -> Khi được phép gõ vào (enabled: true) nhưng chưa focus vào
           borderSide: BorderSide(color: error ? Colors.red : Colors.green, width: error ? 2 : 1),
           borderRadius: const BorderRadius.all(Radius.circular(10)), //Bo góc viền
         ),
+
+        // disabledBorder: const OutlineInputBorder(
+        //   borderSide: BorderSide(color: Colors.grey, width: 1),
+        //   borderRadius: BorderRadius.all(Radius.circular(10)), //Bo góc viền
+        // ),
+
       ),
       // focusNode: _focus,
     );

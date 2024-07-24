@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:thuctap_bai1/home/add_student.dart';
 import 'package:thuctap_bai1/home/student_details.dart';
 import 'controller/all_controller_binding.dart';
 import 'home/home_page.dart';
@@ -9,8 +10,9 @@ void main() {
   runApp(
     GetMaterialApp(
       home: HomePage(),
-      // initialBinding: AllControllerBinding(),
+      getPages: [
+        GetPage(name: '/add_student', page: ()=> AddStudent()),
+      ],
     ),
   );
 }
-
