@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:thuctap_bai1/controller/student_controller.dart';
 import 'package:thuctap_bai1/home/add_student.dart';
-import 'package:thuctap_bai1/home/student_details.dart';
 import 'controller/all_controller_binding.dart';
 import 'home/home_page.dart';
 
@@ -16,7 +14,7 @@ void main() {
       home: HomePage(),
       initialBinding: AllGetxControllerBinding(), // Khởi tạo cho các GetxController
       getPages: [
-        GetPage(name: '/add_student', page: ()=> AddStudent()),
+        GetPage(name: '/add_student', page: ()=> AddStudent(), transition: Transition.upToDown),
       ],
     ),
   );

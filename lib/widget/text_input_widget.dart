@@ -26,20 +26,14 @@ class TextInput extends StatelessWidget {
     return TextField(
       controller: textControl,
       maxLines: 1,
-      //dòng
       maxLength: maxLength,
-      //số lượng ký tự
       enabled: enable,
-      //cho phép sử dụng
       keyboardType: keyboardType,
-      // Kiểu dữ liệu sẽ nhập vào
       textAlign: TextAlign.start,
-      //Căn vị trí chữ gợi ý và chữ gõ vào
-      style: const TextStyle(color: Colors.black),
       //kiểu dáng chữ sẽ gõ vào
-      obscureText: obscureText,
+      style: const TextStyle(color: Colors.black),
       //Ẩn dạng password sau mỗi lần gõ
-
+      obscureText: obscureText,
 
       decoration: InputDecoration(
         hintText: hintText,
@@ -47,7 +41,6 @@ class TextInput extends StatelessWidget {
         prefixIcon: prefixIcon,
         contentPadding: const EdgeInsets.all(10),
         border: InputBorder.none,
-
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: error ? Colors.red : Colors.blue, width: error ? 2 : 1),
           borderRadius: const BorderRadius.all(Radius.circular(10)), //Bo góc viền
@@ -56,14 +49,7 @@ class TextInput extends StatelessWidget {
           borderSide: BorderSide(color: error ? Colors.red : Colors.green, width: error ? 2 : 1),
           borderRadius: const BorderRadius.all(Radius.circular(10)), //Bo góc viền
         ),
-
-        // disabledBorder: const OutlineInputBorder(
-        //   borderSide: BorderSide(color: Colors.grey, width: 1),
-        //   borderRadius: BorderRadius.all(Radius.circular(10)), //Bo góc viền
-        // ),
-
       ),
-      // focusNode: _focus,
     );
   }
 }

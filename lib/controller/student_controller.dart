@@ -8,7 +8,6 @@ import '../model/student.dart';
 
 //I. GetxController
 class StudentController extends GetxController {
-
   @override
   void onInit() {
     super.onInit();
@@ -25,7 +24,7 @@ class StudentController extends GetxController {
   ].obs;
 
   //2. Add student: add, sort, update
-  void addStudent(Student student){
+  void addStudent(Student student) {
     listStudent.add(student);
     listStudent.sort((a, b) => a.age.compareTo(b.age));
     update();
@@ -62,7 +61,7 @@ class StudentController extends GetxController {
   }
 
   //6. Sort list
-  void sortListStudent(){
+  void sortListStudent() {
     listStudent.sort((a, b) => a.age.compareTo(b.age));
     update();
   }

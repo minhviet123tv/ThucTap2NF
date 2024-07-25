@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'student_controller.dart';
 
-// Bindings : Tạo Get.put tất cả các GetxController ở đây -> initialBinding ở GetMaterialApp
+// Bindings : Tạo Bindings tất cả các GetxController ở đây -> initialBinding ở GetMaterialApp
 // => Các nơi sử dụng chỉ việc gọi Get.find<>();
 class AllGetxControllerBinding extends Bindings {
   @override
