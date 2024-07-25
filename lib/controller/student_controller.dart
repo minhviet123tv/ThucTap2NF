@@ -75,11 +75,3 @@ List<String> linkImageRandom = [
   "https://htmediagroup.vn/wp-content/uploads/2022/03/Anh-nghe-thuat-2.jpg",
   "https://chupanhthedep.com/wp-content/uploads/2022/10/chup-anh-profile-ca-nhan-tphcm-11.jpg",
 ];
-
-//III. StudentBindings
-class StudentBindings extends Bindings {
-  @override
-  void dependencies() {
-    Get.lazyPut<StudentController>(() => StudentController());
-  }
-}

@@ -5,6 +5,7 @@
     <application
         android:label="thuctap_bai1"
         android:name="${applicationName}"
+        android:enableOnBackInvokedCallback="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
